@@ -1,17 +1,19 @@
 package calculator;
 
 import java.beans.PropertyEditorSupport;
-import java.util.LinkedList;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 public class App {
 
     public static void main(String[] args) {
         // 연산 결과를 저장할 배열
-        int[] resultArr = new int[10];
+        // int[] resultArr = new int[10];
+        List<Integer> resultArr = new ArrayList<>();
 
         // 저장된 결과의 개수를 세는 변수
-        int count = 0;
+        //int count = 0;
 
         Scanner sc = new Scanner(System.in);
 
@@ -58,30 +60,36 @@ public class App {
             // 결과 출력
             System.out.println("결과: " + result);
 
-            if (count >= resultArr.length) {
-                // 저장된 결과가 10개거나 그 이상일 때
-                for (int i = 1; i < resultArr.length; i++) {
-                    resultArr[i - 1] = resultArr[i];
+            // 결과를 리스트에 저장
+            resultArr.add(result);
+
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) 삭제를 원치 않으시면 아무 키나 입력해주세요.");
+            String remove = sc.next();
+            if (remove.equals("remove")) {
+                if (!resultArr.isEmpty()) {
+                    resultArr.remove(0);
+                    System.out.println("가장 먼저 저장된 연산 결과를 삭제되었습니다.");
+                } else {
+                    System.out.println("삭제할 연산 결과가 없습니다.");
                 }
-                resultArr[resultArr.length - 1] = result;
-            } else {
-                resultArr[count] = result; // 빈 공간에 결과 저장
-                count++;
             }
 
-            System.out.println("저장된 연산 결과: ");
-            for (int i=0; i < count; i++) {
-                System.out.println(resultArr[i]);
+            // 저장된 결과 출력
+            System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) 계속하려면 아무 키나 입력해주세요.");
+            String inquiry = sc.next();
+            if(inquiry.equals("inquiry")) {
+                for (int res: resultArr) {
+                    System.out.println(res);
+                }
             }
 
             // 탈출문 출력
             System.out.println("더 계산하시겠습니까?(exit 입력 시 종료) 계속하려면 아무 키나 입력해주세요.");
             String exit = sc.next();
-            if(exit.equals("exit")) {
+            if (exit.equals("exit")) {
                 System.out.println("프로그램을 종료합니다.");
                 break;
             }
-
 
         }
 
