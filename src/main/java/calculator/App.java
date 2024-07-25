@@ -1,5 +1,6 @@
 package calculator;
 
+import java.beans.PropertyEditorSupport;
 import java.util.Scanner;
 
 public class App {
@@ -19,6 +20,55 @@ public class App {
         // charAt(idx): charAt 메서드는 매개변수로 char 타입으로 반환하고자 하는 문자열의 위치(index)를 받는다.
         char operator = sc.next().charAt(0);
 
-        System.out.println(operator);
+//        // if문
+//        int result = 0; // 결과값을 저장할 변수 선언
+//        if (operator == '+') {
+//            result = num1 + num2;
+//        } else if (operator == '-') {
+//            result = num1 - num2;
+//        } else if (operator == '*') {
+//            result = num1 * num2;
+//        } else if (operator == '/') {
+//            if (num2 != 0) {
+//                // 두번째 정수(num2)가 0이 아닐 때
+//                result = num1 / num2;
+//            } else {
+//                // 두번째 정수(num2)가 0일때
+//                System.out.println("나눗셈 연산에서 분모에 0이 입력될 수 없습니다.");
+//                return;
+//            }
+//        } else {
+//            // 연산자가 ' +, -, *, / ' 중 하나가 아닐 때
+//            System.out.println("잘못된 연산자 입니다.");
+//            return;
+//        }
+//        //계산 결과를 출력
+//        System.out.println("결과: " + result);
+
+        // switch문
+        int result = 0;
+        switch(operator) {
+            case '+':
+                result = num1 + num2;
+                break;
+            case '-':
+                result = num1 - num2;
+                break;
+            case '*':
+                result = num1 * num2;
+            case '/':
+                if (num2 != 0) {
+                    result = num1 / num2;
+                    break;
+                } else {
+                    System.out.println("나눗셈 연산에서 두번째 정수에 0이 입력될 수 없습니다.");
+                    break;
+                }
+            default:
+                System.out.println("오류임 ㅋㅋ");
+        }
+        System.out.println("결과: " + result);
+
+
     }
 }
