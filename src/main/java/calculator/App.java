@@ -51,9 +51,7 @@ public class App {
             System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) 계속하려면 아무 키나 입력해주세요.");
             String inquiry = sc.next();
             if(inquiry.equals("inquiry")) {
-                for (int res: resultArr) {
-                    System.out.println(res);
-                }
+                calculator.inquiryResults();
             }
 
             // 탈출문 출력
