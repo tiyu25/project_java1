@@ -44,12 +44,7 @@ public class App {
             System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) 삭제를 원치 않으시면 아무 키나 입력해주세요.");
             String remove = sc.next();
             if (remove.equals("remove")) {
-                if (!resultArr.isEmpty()) {
-                    resultArr.remove(0);
-                    System.out.println("가장 먼저 저장된 연산 결과를 삭제되었습니다.");
-                } else {
-                    System.out.println("삭제할 연산 결과가 없습니다.");
-                }
+                calculator.removeResult();
             }
 
             // 저장된 결과 출력

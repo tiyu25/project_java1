@@ -6,6 +6,15 @@ public class Calculator {
     // 연산 결과를 저장할 컬렉션 타입(List) 필드 선언 및 생성
     ArrayList<Integer> resultArr = new ArrayList<>();
 
+    // Getter 메서드
+    public ArrayList<Integer> getResult() {
+        return resultArr;
+    }
+
+    // Setter 메서드
+    public void setResultArr(ArrayList<Integer> resultArr) {
+        this.resultArr = resultArr;
+    }
     //결과
     int result = 0;
 
@@ -41,15 +50,18 @@ public class Calculator {
         return result;
     }
 
-    // Getter 메서드
-    public ArrayList<Integer> getResult() {
-        return resultArr;
+
+
+    // 가장 먼저 저장된 데이터 삭제
+    public void removeResult() {
+        if (!resultArr.isEmpty()) {
+            resultArr.remove(0);
+            System.out.println("가장 먼저 저장된 연산 결과를 삭제되었습니다.");
+        } else {
+            System.out.println("삭제할 연산 결과가 없습니다.");
+        }
     }
 
-    // Setter 메서드
-    public void setResultArr(ArrayList<Integer> resultArr) {
-        this.resultArr = resultArr;
-    }
 
 
 
