@@ -62,6 +62,13 @@ public class Calculator {
         }
     }
 
+    // 저장된 결과 출력
+    public void inquiryResults() {
+        for (int res: resultArr) {
+            System.out.println(res);
+        }
+    }
+
 
 
 
