@@ -6,17 +6,14 @@ public class Calculator {
     // 연산 결과를 저장할 컬렉션 타입(List) 필드 선언 및 생성
     ArrayList<Integer> resultArr = new ArrayList<>();
 
-    // Getter 메서드
-    public ArrayList<Integer> getResult() {
-        return resultArr;
-    }
+    // 원의 넓이 결과를 저장할 컬렉션 타입(List) 필드 선언 및 생성
+    ArrayList<Double> circleResultArr = new ArrayList<>();
 
-    // Setter 메서드
-    public void setResultArr(ArrayList<Integer> resultArr) {
-        this.resultArr = resultArr;
-    }
-    //결과
+    // 사칙연산 결과
     int result = 0;
+
+    // 원의 넓이 결과
+    double areaResult;
 
     public int calculate(int num1, int num2, char operator) throws Exception {
         switch(operator) {
@@ -50,9 +47,17 @@ public class Calculator {
         return result;
     }
 
+    // (사칙연산) Getter 메서드
+    public ArrayList<Integer> getResult() {
+        return resultArr;
+    }
 
+    // (사칙연산) Setter 메서드
+    public void setResultArr(ArrayList<Integer> resultArr) {
+        this.resultArr = resultArr;
+    }
 
-    // 가장 먼저 저장된 데이터 삭제
+    // (사칙연산) 가장 먼저 저장된 데이터 삭제
     public void removeResult() {
         if (!resultArr.isEmpty()) {
             resultArr.remove(0);
@@ -62,12 +67,65 @@ public class Calculator {
         }
     }
 
-    // 저장된 결과 출력
+    // (사칙연산) 저장된 결과 출력
     public void inquiryResults() {
         for (int res: resultArr) {
             System.out.println(res);
         }
     }
+
+
+    // static, final 키워드 사용 설명과 활용한 이유
+    // 1. 계산된 원의 넓이를 저장합니다.
+    // 2. 생성자로 초기화됩니다.
+    // 3. 외부에서 직접 접근할 수 없습니다.
+    // 4. Getter, Setter 메서드를 구현합니다.
+    // 5. 원의 넓이 결과값들을 조회하는 메서드를 구현합니다.
+
+
+    // 원주률
+    final double PI = 3.14159; // 원주율을 변경할 수 없는 값이기 때문에 final을 사용
+
+    public double calculateCircleArea(double radius) {
+        // 원의 넓이 계산
+        areaResult = PI*radius*radius;
+
+        // 결과를 리스트에 저장
+        circleResultArr.add((double) areaResult);
+
+        // 결과값 출력
+        System.out.println(areaResult);
+
+        return areaResult;
+    }
+
+    public ArrayList<Double> getAreaResult() {
+        return circleResultArr;
+    }
+
+    public void setAreaResultArr(ArrayList<Double> circleResultArr) {
+        this.circleResultArr = circleResultArr;
+    }
+
+    public void inquiryAreaResults() {
+        for (double res: circleResultArr) {
+            System.out.println(res);
+        }
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
