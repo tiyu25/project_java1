@@ -8,8 +8,8 @@ import java.util.Scanner;
 public class App {
 
     public static void main(String[] args) {
-        // Calculator 인스턴스 생성
-        Calculator calculator = new Calculator();
+        ArithmeticCalculator arithmeticCalculator = new ArithmeticCalculator();
+        CircleCalculator circleCalculator = new CircleCalculator();
 
         // 사칙연산
         ArrayList<Integer> resultArr = new ArrayList<>();
@@ -38,7 +38,7 @@ public class App {
 
                 // 연산 결과 출력 및 저장
                 try {
-                    result = calculator.calculate(num1, num2, operator);
+                    result = arithmeticCalculator.calculate(num1, num2, operator);
                 } catch (Exception e) {
                     // 나눗셈 두번째 정수 0 입력 시 예외처리
                     System.out.println(e.getMessage());
@@ -47,20 +47,17 @@ public class App {
                 // 결과 출력
                 System.out.println("결과: " + result);
 
-                // 결과를 리스트에 저장
-                resultArr.add(result);
-
                 System.out.println("가장 먼저 저장된 연산 결과를 삭제하시겠습니까? (remove 입력 시 삭제) 삭제를 원치 않으시면 아무 키나 입력해주세요.");
                 String remove = sc.next();
                 if (remove.equals("remove")) {
-                    calculator.removeResult();
+                    arithmeticCalculator.removeResult();
                 }
 
                 // 저장된 결과 출력
                 System.out.println("저장된 연산결과를 조회하시겠습니까? (inquiry 입력 시 조회) 계속하려면 아무 키나 입력해주세요.");
                 String inquiry = sc.next();
                 if(inquiry.equals("inquiry")) {
-                    calculator.inquiryResults();
+                    arithmeticCalculator.inquiryResults();
                 }
 
                 // 탈출문 출력
@@ -78,13 +75,13 @@ public class App {
                 System.out.println("원의 반지름을 입력해주세요.");
                 double radius = sc.nextDouble();
 
-                calculator.calculateCircleArea(radius);
+                circleCalculator.calculateCircleArea(radius);
 
                 // 저장된 결과값 조회
                 System.out.println("저장된 원의 넓이 값을 조회하시겠습니까? (inquiry 입력 시 조회) 계속하려면 아무 키나 입력해주세요.");
                 String inquiry1 = sc.next();
                 if(inquiry1.equals("inquiry")) {
-                    calculator.inquiryAreaResults();
+                    circleCalculator.inquiryAreaResults();
                 }
 
             }
