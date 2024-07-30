@@ -3,8 +3,19 @@ package calculator;
 import java.util.ArrayList;
 
 public class ArithmeticCalculator {
-    // 연산 결과를 저장할 컬렉션 타입(List) 필드 선언 및 생성
     ArrayList<Integer> resultArr = new ArrayList<>();
+
+    private AddOperator addOperator;
+    private SubtractOperator subtractOperator;
+    private MultiplyOperator multiplyOperator;
+    private DivideOperator divideOperator;
+
+    public ArithmeticCalculator() {
+        this.addOperator = new AddOperator();
+        this.subtractOperator = new SubtractOperator();
+        this.multiplyOperator = new MultiplyOperator();
+        this.divideOperator = new DivideOperator();
+    }
 
     // 사칙연산 결과
     int result = 0;
@@ -12,21 +23,18 @@ public class ArithmeticCalculator {
     public int calculate(int num1, int num2, char operator) throws Exception {
         switch(operator) {
             case '+':
-                result = num1 + num2;
+                result = addOperator.calculate(num1, num2);
                 break;
             case '-':
-                result = num1 - num2;
+                result = subtractOperator.calculate(num1, num2);
                 break;
             case '*':
-                result = num1 * num2;
+                result = multiplyOperator.calculate(num1, num2);
                 break;
             case '/':
-                if (num2 != 0) {
-                    // num2이 0이 아닐 때
-                    result = num1 / num2;
-                } else {
-                    // num2이 0일 때
-                    // throws를 통하여 예외처리
+                try {
+                    result = divideOperator.calculate(num1, num2);
+                } catch (Exception e) {
                     throw new Exception("나눗셈 연산에서 두번째 정수에 0이 입력될 수 없습니다.");
                 }
                 break;
