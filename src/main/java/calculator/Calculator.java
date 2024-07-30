@@ -36,9 +36,19 @@ public class Calculator {
         }
 
         // 결과를 리스트에 저장
-        resultArr.add(result);
+        resultArr.add(result); 
 
         return result;
+    }
+
+    // Getter 메서드
+    public ArrayList<Integer> getResult() {
+        return resultArr;
+    }
+
+    // Setter 메서드
+    public void setResultArr(ArrayList<Integer> resultArr) {
+        this.resultArr = resultArr;
     }
 
 
