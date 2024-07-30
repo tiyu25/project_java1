@@ -9,12 +9,14 @@ public class ArithmeticCalculator {
     private SubtractOperator subtractOperator;
     private MultiplyOperator multiplyOperator;
     private DivideOperator divideOperator;
+    private ModOperator modOperator;
 
     public ArithmeticCalculator() {
         this.addOperator = new AddOperator();
         this.subtractOperator = new SubtractOperator();
         this.multiplyOperator = new MultiplyOperator();
         this.divideOperator = new DivideOperator();
+        this.modOperator = new ModOperator();
     }
 
     // 사칙연산 결과
@@ -36,6 +38,13 @@ public class ArithmeticCalculator {
                     result = divideOperator.calculate(num1, num2);
                 } catch (Exception e) {
                     throw new Exception("나눗셈 연산에서 두번째 정수에 0이 입력될 수 없습니다.");
+                }
+                break;
+            case '%':
+                try {
+                    result = modOperator.calculate(num1, num2);
+                } catch (Exception e) {
+                    throw new Exception("나머지 연산에서 두번째 정수에 0이 입력될 수 없습니다.");
                 }
                 break;
             default:
